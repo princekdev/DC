@@ -1,0 +1,396 @@
+/* ---------------------------------------------------------------
+   Page shell
+----------------------------------------------------------------- */
+.page {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 4vw, 2.5rem) 4rem;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  background: var(--teal-dark);
+  color: #fff;
+  padding: 0.65rem 1rem;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  font-weight: 600;
+  transition: top 0.15s ease;
+  z-index: 10;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* ---------------------------------------------------------------
+   Hero
+----------------------------------------------------------------- */
+.hero {
+  padding: clamp(2.5rem, 6vw, 4rem) 0 2rem;
+  max-width: 46rem;
+}
+
+.hero__eyebrow {
+  color: var(--teal);
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.75rem;
+}
+
+.hero__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.1rem, 5vw, 3rem);
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 1rem;
+}
+
+.hero__subtitle {
+  font-size: 1.05rem;
+  color: var(--ink-muted);
+  max-width: 40rem;
+}
+
+/* ---------------------------------------------------------------
+   Controls: the diff toggle + live status text
+----------------------------------------------------------------- */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1.25rem;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.controls__status {
+  color: var(--ink-muted);
+  font-size: 0.95rem;
+}
+
+.diff-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: transparent;
+  border: none;
+  padding: 0.35rem 0.25rem;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.diff-toggle__track {
+  --track-w: 2.75rem;
+  --track-h: 1.5rem;
+  width: var(--track-w);
+  height: var(--track-h);
+  border-radius: 999px;
+  background: var(--control-off);
+  padding: 0.15rem;
+  display: inline-flex;
+  align-items: center;
+  transition: background-color 0.15s ease;
+  flex-shrink: 0;
+}
+
+.diff-toggle[aria-pressed="true"] .diff-toggle__track {
+  background: var(--teal);
+}
+
+.diff-toggle__thumb {
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.15s ease;
+}
+
+.diff-toggle[aria-pressed="true"] .diff-toggle__thumb {
+  transform: translateX(1.25rem);
+}
+
+.diff-toggle:hover .diff-toggle__track {
+  filter: brightness(0.96);
+}
+
+/* ---------------------------------------------------------------
+   Comparison table - shared / desktop styles
+----------------------------------------------------------------- */
+.comparison {
+  outline: none; /* keep focus programmatic-only for the skip-link target */
+}
+
+.compare-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.compare-table caption {
+  text-align: left;
+  padding: 1.1rem 1.25rem 0;
+  font-size: 0.9rem;
+  color: var(--ink-muted);
+}
+
+.compare-table th,
+.compare-table td {
+  padding: 0.9rem 1.1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+
+.feature-col-head {
+  width: 26%;
+  color: var(--ink-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  vertical-align: bottom;
+}
+
+.plan-head {
+  width: 24.6%;
+  vertical-align: top;
+  background: var(--surface-alt);
+}
+
+.plan-head--highlighted {
+  background: var(--amber-tint);
+}
+
+.plan-head__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  position: relative;
+}
+
+.plan-head__badge {
+  align-self: flex-start;
+  background: var(--amber);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  margin-bottom: 0.25rem;
+}
+
+.plan-head__name {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.plan-head__price {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.plan-head__period {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--ink-muted);
+}
+
+.plan-head__tagline {
+  color: var(--ink-muted);
+  font-size: 0.88rem;
+  margin: 0.15rem 0 0.5rem;
+  min-height: 2.6em;
+}
+
+.plan-head__cta {
+  background: var(--teal-dark);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.05s ease;
+}
+
+.plan-head--highlighted .plan-head__cta {
+  background: var(--amber-strong);
+}
+
+.plan-head__cta:hover {
+  filter: brightness(1.1);
+}
+
+.plan-head__cta:active {
+  transform: translateY(1px);
+}
+
+.group-row th {
+  background: var(--surface-alt);
+  color: var(--ink-muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.feature-row:hover td,
+.feature-row:hover th {
+  background: var(--surface-alt);
+}
+
+.feature-name {
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.feature-value__inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.value-icon {
+  width: 1.1rem;
+  height: 1.1rem;
+  flex-shrink: 0;
+}
+
+.value--yes .value-icon {
+  color: var(--teal);
+}
+
+.value--no .value-icon {
+  color: var(--ink-muted);
+}
+
+.value--no span:last-child {
+  color: var(--ink-muted);
+}
+
+.col-highlight {
+  background: var(--teal-tint);
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--ink-muted);
+  padding: 2rem 1rem;
+}
+
+.page-footer {
+  margin-top: 2rem;
+  color: var(--ink-muted);
+  font-size: 0.9rem;
+}
+
+/* ---------------------------------------------------------------
+   Mobile / narrow layout
+   ----------------------------------------------------------------
+   Below 700px the table is rebuilt as a stacked layout purely with
+   CSS `display` changes. The underlying markup does not change, and
+   explicit role="table"/"row"/"cell" attributes on the elements (set
+   in ComparisonTable.jsx) keep the row/column relationships available
+   to screen readers even though visually everything is now a single
+   column. See README "Narrow-screen handling" for the full rationale.
+----------------------------------------------------------------- */
+@media (max-width: 700px) {
+  .compare-table,
+  .compare-table thead,
+  .compare-table tbody,
+  .compare-table tr,
+  .compare-table th,
+  .compare-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .compare-table {
+    border-radius: var(--radius-md);
+  }
+
+  .compare-table caption {
+    padding: 1rem 1rem 0;
+  }
+
+  /* The "Feature" column header is redundant once each row shows its
+     own feature name as a heading, so it is removed from the flow
+     (not just hidden visually) rather than left as empty space. */
+  .feature-col-head {
+    display: none;
+  }
+
+  .plan-head {
+    border-bottom: 1px solid var(--border);
+    padding: 1.1rem 1rem;
+  }
+
+  .plan-head:last-child {
+    border-bottom: 2px solid var(--border-strong);
+  }
+
+  .group-row th {
+    padding: 0.75rem 1rem;
+  }
+
+  .feature-row {
+    padding: 0.6rem 1rem 0.75rem;
+  }
+
+  .feature-name {
+    padding: 0 0 0.35rem 0;
+    border-bottom: none;
+    font-weight: 600;
+  }
+
+  .feature-value {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.4rem 0;
+    border-bottom: 1px dashed var(--border);
+    gap: 1rem;
+  }
+
+  .feature-row td:last-child {
+    border-bottom: none;
+  }
+
+  /* The plan name for each value is generated from the data-label
+     attribute set in the JSX, so the label and the underlying table
+     header text can never drift out of sync. */
+  .feature-value::before {
+    content: attr(data-label);
+    color: var(--ink-muted);
+    font-size: 0.85rem;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  .col-highlight {
+    background: none;
+    border-radius: var(--radius-sm);
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    margin: 0 -0.5rem;
+  }
+}

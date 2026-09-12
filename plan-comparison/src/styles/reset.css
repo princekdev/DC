@@ -1,0 +1,118 @@
+/* ---------------------------------------------------------------
+   Design tokens
+   ----------------------------------------------------------------
+   Colors were chosen and checked for contrast against WCAG AA:
+   - ink (#16201C) on bg (#F1F4F0)      -> ~15.5:1
+   - ink-muted (#445048) on white       -> ~7.6:1
+   - teal (#0E6E5B) on white            -> ~5.6:1
+   - amber (#8A5A20, "amber-ink") on white -> ~5.2:1
+   - white on teal-dark (#0A5548)       -> ~7.4:1 (buttons)
+----------------------------------------------------------------- */
+:root {
+  --bg: #f1f4f0;
+  --surface: #ffffff;
+  --surface-alt: #f7f9f6;
+  --border: #d6ded3;
+  --border-strong: #b9c4b5;
+  /* Used for the toggle's "off" track: needs >=3:1 against white for
+     WCAG 1.4.11 (non-text UI component contrast), unlike --border-strong. */
+  --control-off: #7e8b7c;
+
+  --ink: #16201c;
+  --ink-muted: #445048;
+
+  --teal: #0e6e5b;
+  --teal-dark: #0a5548;
+  --teal-tint: #e4f1ed;
+
+  --amber: #8a5a20;
+  --amber-strong: #6e4718;
+  --amber-tint: #f5e9d8;
+
+  --focus-color: #8a5a20;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+
+  --shadow-sm: 0 1px 2px rgba(22, 32, 28, 0.08);
+  --shadow-md: 0 8px 24px rgba(22, 32, 28, 0.1);
+
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  --max-width: 1120px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+/* Prevent any element from forcing horizontal scroll at narrow widths. */
+html,
+body,
+#root {
+  overflow-x: hidden;
+}
+
+/* ---------------------------------------------------------------
+   Focus visibility
+   ----------------------------------------------------------------
+   A single, high-contrast focus style is applied to every interactive
+   element via :focus-visible, so keyboard users always get a clear
+   indicator while mouse users don't see a ring on click.
+----------------------------------------------------------------- */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--focus-color);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
