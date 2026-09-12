@@ -467,11 +467,21 @@ button, input, select, textarea {
   .app__main {
     padding: 1rem 0.75rem 2rem;
   }
+
   .panel {
     padding: 1rem 0.85rem;
   }
+
   .dashboard__stat dd {
     font-size: 1.5rem;
+  }
+
+  .form__actions {
+    flex-direction: column;
+  }
+
+  .form__actions .btn {
+    width: 100%;
   }
 }
 
