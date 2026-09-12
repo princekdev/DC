@@ -191,6 +191,7 @@ export default function OpportunityForm({ editingItem, onSave, onCancel }) {
           <textarea
             id="notes"
             rows={3}
+            maxLength={500}
             placeholder="Referral contact, interview prep, follow-up reminders…"
             value={values.notes}
             onChange={(e) => handleChange('notes', e.target.value)}
